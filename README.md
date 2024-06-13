@@ -1,30 +1,59 @@
-# React + TypeScript + Vite
+# Школьная система промежуточных аттестаций
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Описание проекта
 
-Currently, two official plugins are available:
+Проект представляет собой клиентскую часть системы для проведения промежуточных аттестаций учащихся в формате тестов. Тестирование включает несколько типов вопросов и реализовано в виде пошаговой формы.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Функционал
 
-## Expanding the ESLint configuration
+-   **Типы вопросов**:
+    -   Выбор одного варианта ответа (Radio)
+    -   Выбор нескольких вариантов ответа (Checkbox)
+    -   Короткий ответ (Short Text)
+    -   Развернутый ответ (Long Text)
+-   **Пошаговая форма** для прохождения теста.
+-   **Сохранение прогресса** при перезагрузке страницы.
+-   **Ограничение по времени** для выполнения теста.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Стек технологий
 
-- Configure the top-level `parserOptions` property like this:
+-   **React**
+-   **TypeScript**
+-   **shadcn/ui**
+-   **Eslint**
+-   **Vite**
+-   **Tailwind**
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+## Установка и запуск
+
+1. Клонируйте репозиторий:
+
+```bash
+git clone https://github.com/UnlimAwesome/madsoft.git
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+2. Перейдите в директорию проекта:
+
+```bash
+cd school-testing-system
+```
+
+3. Установите зависимости
+
+```bash
+npm install
+```
+
+5. Запустите проект
+
+```bash
+npm run dev
+```
+
+## Пример использования
+
+1. Откройте приложение в браузере.
+2. Начните прохождение теста, отвечая на вопросы по очереди.
+3. Прогресс будет сохраняться автоматически, и вы сможете продолжить с того места, где остановились, даже после перезагрузки страницы.
+4. Вы можете вернуться к любому вопросу, кликнув на панель над вопросом.
+5. В случае необходимости, тест будет завершен автоматически по истечении установленного времени.
