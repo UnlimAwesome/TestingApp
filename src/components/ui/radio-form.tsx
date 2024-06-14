@@ -34,13 +34,25 @@ export const RadioResult = (props: { question: IRadioQuestion & { chosenAnswer: 
 			className='w-auto'
 			disabled
 		>
-			{question.options.map((value, index) => (
-				<RadioItem
-					key={question.id + '-option-' + index}
-					value={value}
-					correct={value === question.answer || (value === question.chosenAnswer ? false : undefined)}
-				/>
-			))}
+			{question.options.map((value, index) => {
+				let correct;
+				if (value === question.answer) {
+					console.log(value, question.answer);
+
+					correct = true;
+				} else if (value === question.chosenAnswer) {
+					console.log(value, question.chosenAnswer);
+					correct = false;
+				}
+
+				return (
+					<RadioItem
+						key={question.id + '-option-' + index}
+						value={value}
+						correct={correct}
+					/>
+				);
+			})}
 		</RadioGroup>
 	);
 };

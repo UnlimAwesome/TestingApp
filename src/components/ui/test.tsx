@@ -8,10 +8,11 @@ interface testProps {
 	className?: string;
 	questionsDTO: IQuestion[];
 	timer: number;
+	onSubmit: () => void;
 }
 
 export const Test = (props: testProps) => {
-	const { className, questionsDTO, timer, ...otherProps } = props;
+	const { className, questionsDTO, onSubmit, timer, ...otherProps } = props;
 	const [activeQuestion, setActiveQuestion] = useState(0);
 	const [questions, setQuestions] = useState<(IQuestion & { seen: boolean; chosenAnswer: string })[]>(() =>
 		!localStorage.getItem('questions')
@@ -25,8 +26,11 @@ export const Test = (props: testProps) => {
 		};
 
 		window.addEventListener('beforeunload', handleUnmount);
+		window.addEventListener('unload', handleUnmount);
 		return () => {
 			window.removeEventListener('beforeunload', handleUnmount);
+			window.removeEventListener('unload', handleUnmount);
+			handleUnmount();
 		};
 	}, []);
 
@@ -84,8 +88,7 @@ export const Test = (props: testProps) => {
 				}}
 				onSubmit={() => {
 					if (activeQuestion === questions.length - 1) {
-						localStorage.setItem('questions', JSON.stringify(questions));
-						window.location.href = '/results';
+						onSubmit();
 					}
 					setActiveQuestion(activeQuestion + 1);
 				}}

@@ -1,11 +1,9 @@
-import { Button } from '@/components/ui/button';
-import { CheckboxForm, CheckboxResult } from '@/components/ui/checkbox-form';
-import { LongTextForm, LongTextResult } from '@/components/ui/long-text-form';
-import { RadioForm, RadioResult } from '@/components/ui/radio-form';
-import { ShortTextForm, ShortTextResult } from '@/components/ui/short-text-form';
+import { CheckboxResult } from '@/components/ui/checkbox-form';
+import { LongTextResult } from '@/components/ui/long-text-form';
+import { RadioResult } from '@/components/ui/radio-form';
+import { ShortTextResult } from '@/components/ui/short-text-form';
 import { cn } from '@/lib/utils';
 import { IQuestion, IQuestionFormProps, QuestionType } from '@/model/question';
-import { useEffect } from 'react';
 
 interface QuestionProps {
 	question: IQuestion & { chosenAnswer: string | string[] };

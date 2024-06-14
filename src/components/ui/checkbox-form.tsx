@@ -32,17 +32,33 @@ export const CheckboxForm = (props: CheckboxFormProps) => {
 export const CheckboxResult = (props: { question: ICheckboxQuestion & { chosenAnswer: string | string[] } }) => {
 	const { question } = props;
 	return (
-		<div className='w-auto flex flex-col gap-1'>
-			{question.options.map((value, index) => (
-				<CheckboxItem
-					key={question.id + '-option-' + index}
-					value={value}
-					disabled
-					checked={question.chosenAnswer.includes(value) || question.answer.includes(value)}
-					onCheckedChange={() => {}}
-					correct={question.answer.includes(value) || undefined}
-				/>
-			))}
+		<div className='flex gap-6'>
+			{!question.options.every((value) => question.chosenAnswer.includes(value)) && (
+				<div className='w-auto flex flex-col gap-1'>
+					{question.options.map((value, index) => (
+						<CheckboxItem
+							key={question.id + '-option-' + index}
+							value={value}
+							disabled
+							checked={question.chosenAnswer.includes(value)}
+							onCheckedChange={() => {}}
+							correct={question.chosenAnswer.includes(value) && question.answer.includes(value)}
+						/>
+					))}
+				</div>
+			)}
+			<div className='w-auto flex flex-col gap-1'>
+				{question.options.map((value, index) => (
+					<CheckboxItem
+						key={question.id + '-option-' + index}
+						value={value}
+						disabled
+						checked={question.answer.includes(value)}
+						onCheckedChange={() => {}}
+						correct={question.answer.includes(value)}
+					/>
+				))}
+			</div>
 		</div>
 	);
 };
@@ -63,7 +79,7 @@ const CheckboxItem = (props: {
 				id={id}
 				disabled={props.disabled || false}
 				className={cn(
-					props.correct &&
+					props.correct !== undefined &&
 						(props.correct ? 'data-[state=checked]:bg-green-200' : 'data-[state=checked]:bg-red-200')
 				)}
 			/>
