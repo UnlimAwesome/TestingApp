@@ -37,11 +37,8 @@ export const RadioResult = (props: { question: IRadioQuestion & { chosenAnswer: 
 			{question.options.map((value, index) => {
 				let correct;
 				if (value === question.answer) {
-					console.log(value, question.answer);
-
 					correct = true;
 				} else if (value === question.chosenAnswer) {
-					console.log(value, question.chosenAnswer);
 					correct = false;
 				}
 

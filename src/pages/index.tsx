@@ -3,7 +3,7 @@ import { Test } from '@/components/ui/test';
 import { questionMock } from '@/lib/mock';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-const TestTimeMinutes = 20;
+const TestTimeMinutes = 0.1;
 export const TestPage = () => {
 	const navigate = useNavigate();
 	const [timer, setTimer] = useState<number | undefined>();
@@ -34,15 +34,15 @@ export const TestPage = () => {
 	}, []);
 
 	useEffect(() => {
-		if (!timer) return;
+		if (timer == undefined) return;
 		if (timer <= 0) {
 			finishTest();
 			return;
 		}
-		const interval = setInterval(() => {
+		const timeout = setTimeout(() => {
 			setTimer((prev) => (prev ? prev - 1 : undefined));
 		}, 1000);
-		return () => clearInterval(interval);
+		return () => clearTimeout(timeout);
 	}, [timer]);
 
 	return (
