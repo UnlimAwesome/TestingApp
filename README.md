@@ -29,13 +29,13 @@
 1. Клонируйте репозиторий:
 
 ```bash
-git clone https://github.com/UnlimAwesome/madsoft.git
+git clone https://github.com/UnlimAwesome/TestingApp.git
 ```
 
 2. Перейдите в директорию проекта:
 
 ```bash
-cd school-testing-system
+cd TestingApp
 ```
 
 3. Установите зависимости
