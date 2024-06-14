@@ -3,7 +3,7 @@ import { Test } from '@/components/ui/test';
 import { questionMock } from '@/lib/mock';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-const TestTimeMinutes = 0.1;
+const TestTimeMinutes = 20;
 export const TestPage = () => {
 	const navigate = useNavigate();
 	const [timer, setTimer] = useState<number | undefined>();
